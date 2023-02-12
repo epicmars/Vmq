@@ -290,7 +290,9 @@ public class WebService {
             url = settingDao.findById("returnUrl").get().getVvalue();
         }
 
-        return ResUtil.success(url+"?"+p);
+        String redirectUrl = url.contains("?") ? url + "&" + p : url+"?"+p;
+
+        return ResUtil.success(redirectUrl);
     }
 
     public CommonRes getState(String t,String sign){
